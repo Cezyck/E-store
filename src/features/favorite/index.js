@@ -1,0 +1,1 @@
+export { default as FavoriteProvider, useFavorites } from './model/context'

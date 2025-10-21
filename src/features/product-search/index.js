@@ -1,0 +1,1 @@
+export { useProductSearchModel } from './model/search'

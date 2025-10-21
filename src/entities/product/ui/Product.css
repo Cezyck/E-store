@@ -1,0 +1,157 @@
+.product {
+	position: relative;
+	border-radius: 16px;
+	padding: 2rem;
+	background: var(--product-bg);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	border: 1px solid var(--border-color);
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.product::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+	background-size: 400% 400%;
+	animation: gradientShift 8s ease infinite;
+}
+
+.product:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.product img {
+	width: 100%;
+	height: 200px;
+	object-fit: contain;
+	border-radius: 12px;
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+	backdrop-filter: blur(10px);
+}
+
+.product div {
+	text-align: left;
+	padding: 0;
+}
+
+.product h3 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--product-title);
+	line-height: 1.4;
+	margin-bottom: 1rem;
+	background: linear-gradient(135deg, var(--product-title) 0%, #764ba2 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.product p {
+	font-size: 1rem;
+	color: var(--text-color);
+	font-weight: 400;
+	margin-bottom: 1rem;
+	line-height: 1.6;
+	opacity: 0.9;
+}
+
+.product span {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 800;
+	color: var(--price-color);
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.details {
+	margin-top: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border-color);
+}
+.fav-btn {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: var(--product-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.fav-btn:hover {
+	transform: translateY(-2px) scale(1.1);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Анимация градиента из хедера */
+@keyframes gradientShift {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* Статус товара */
+.product-status {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	margin-top: 0.5rem;
+}
+
+.status-available {
+	background: rgba(102, 126, 234, 0.1);
+	color: #667eea;
+	border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.status-sold {
+	background: rgba(245, 87, 108, 0.1);
+	color: #f5576c;
+	border: 1px solid rgba(245, 87, 108, 0.3);
+}
+
+/* Стили для проданных товаров */
+.product.sold-out {
+	opacity: 0.3;
+	cursor: default;
+	background: var(--product-bg);
+}
+
+.product.sold-out:hover {
+	transform: none;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.product.sold-out .fav-btn {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.product.sold-out .fav-btn:hover {
+	transform: none;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}

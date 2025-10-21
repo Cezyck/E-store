@@ -1,0 +1,344 @@
+.header {
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--product-bg) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 0 2rem;
+    min-height: 0.7rem;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+.header > div {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+}
+
+/* Левый блок с логотипом и поиском */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.header-left h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--product-title) 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+/* Стили для поисковой строки */
+.search-bar {
+    background: var(--product-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 250px;
+    animation: fadeInUp 0.6s ease-out 0.05s both;
+}
+
+.search-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 1px 1px 0 0;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+.search-bar:focus::before {
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    animation: gradientShift 2s ease infinite;
+}
+
+.search-bar::placeholder {
+    color: var(--text-color);
+    opacity: 0.6;
+    font-weight: 500;
+}
+
+.search-bar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Навигация */
+.nav {
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.nav a:hover {
+    color: var(--product-title);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.nav a:hover::before {
+    width: 80%;
+}
+
+.nav a.active {
+    color: var(--product-title);
+    background: rgba(102, 126, 234, 0.15);
+}
+
+.nav a.active::before {
+    width: 80%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* Правый блок с переключателем темы и избранным */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.theme-toggle {
+    background: var(--product-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover img {
+    transform: rotate(15deg);
+}
+
+.favorites {
+    background: var(--product-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.favorites::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f5576c, #f093fb);
+}
+
+.favorites:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    color: #f5576c;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .header > div {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+    }
+    
+    .nav ul {
+        gap: 1rem;
+    }
+    
+    .search-bar {
+        min-width: 200px;
+        padding: 0.65rem 1.25rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 1.5rem;
+    }
+    
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .header-left {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .header-left h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header-right {
+        gap: 1rem;
+    }
+    
+    .search-bar {
+        min-width: 180px;
+        padding: 0.6rem 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0 1rem;
+    }
+    
+    .header-left {
+        gap: 0.75rem;
+    }
+    
+    .header-left h1 {
+        font-size: 1.3rem;
+    }
+    
+    .nav ul {
+        gap: 0.25rem;
+    }
+    
+    .nav a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .theme-toggle,
+    .favorites {
+        padding: 0.6rem;
+    }
+    
+    .theme-toggle img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .search-bar {
+        min-width: 150px;
+        padding: 0.5rem 0.8rem;
+        font-size: 1.1rem;
+    }
+}
