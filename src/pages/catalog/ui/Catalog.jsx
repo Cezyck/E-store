@@ -33,13 +33,16 @@ export default function Catalog() {
    if (!debouncedSearchTerm.trim()) return true
    
    const searchLower = debouncedSearchTerm.toLowerCase().trim()
-   const status = inStock => (inStock ? 'в наличии' : 'продан')
+    const getStatus = (inStock) => (inStock ? 'в наличии' : 'продан')
+            
+            // Получаем статус текущего товара
+            const productStatus = getStatus(product.inStock).toLowerCase()
 
-   return (
-    product.name?.toLowerCase().includes(searchLower) ||
-    product.description?.toLowerCase().includes(searchLower) ||
-    status.toLowerCase().includes(searchLower)
-   )
+            return (
+                product.name?.toLowerCase().includes(searchLower) ||
+                product.description?.toLowerCase().includes(searchLower) ||
+                productStatus.includes(searchLower)
+            )
   })
  }, [debouncedSearchTerm, products])
  if (loading) {
