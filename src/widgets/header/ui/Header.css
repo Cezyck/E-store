@@ -1,8 +1,8 @@
 .header {
+    position: relative;
     background: linear-gradient(135deg, var(--bg-color) 0%, var(--product-bg) 100%);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     padding: 0 2rem;
